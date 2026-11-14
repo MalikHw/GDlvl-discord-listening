@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDLevel Dihcord Listener</title>
+    <!-- CSS is AI generated. Im lazy. -->
+         <style>
+        /* Global reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #313338;
+            font-family: "Noto Sans", sans-serif;
+            color: #e0e0e0;          /* soft off-white for readability */
+            line-height: 1.6;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 2rem 1.5rem 0;   /* top & side padding, bottom handled by footer */
+        }
+
+        /* Main content wrapper — keeps everything centered and readable */
+        .content {
+            max-width: 860px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1;                  /* pushes footer to bottom */
+        }
+
+        /* Headings — Noto Sans, weight 600 */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-top: 1.8em;
+            margin-bottom: 0.5em;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.6rem;
+            font-weight: 600;
+        }
+
+        /* Paragraphs, lists */
+        p, li {
+            color: #d4d6da;
+            font-size: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        /* Links — accent color, subtle hover */
+        a {
+            color: #7289DA;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.1s ease;
+        }
+
+        a:hover {
+            color: #8ea1f0;
+            text-decoration: underline;
+        }
+
+        /* Unordered lists — proper indentation and spacing */
+        ul, ol {
+            margin: 0.8rem 0 1.2rem 1.8rem;
+        }
+
+        li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Inline code / code blocks — minimal, no fancy syntax highlight */
+        code {
+            background-color: #2b2d31;
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            font-family: "Noto Sans", monospace;
+            font-size: 0.95em;
+            color: #e0e0e0;
+            border: 1px solid #3f4147;
+        }
+
+        pre {
+            background-color: #2b2d31;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.2rem 0;
+            border: 1px solid #3f4147;
+            font-family: "Noto Sans", monospace;
+            font-size: 0.95em;
+            color: #e0e0e0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: inherit;
+            color: inherit;
+        }
+
+        /* Horizontal rule — subtle */
+        hr {
+            border: none;
+            border-top: 1px solid #3f4147;
+            margin: 2rem 0 1rem;
+        }
+
+        /* Small note / emphasis inside paragraphs */
+        .note {
+            font-style: italic;
+            color: #b0b3b8;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Footer — simple, fixed to bottom of content */
+        .footer {
+            max-width: 860px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.2rem 0 1.8rem;
+            border-top: 1px solid #3f4147;
+            font-size: 0.95rem;
+            text-align: center;
+            color: #a0a3a8;
+        }
+
+        .footer a {
+            color: #7289DA;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            color: #8ea1f0;
+            text-decoration: underline;
+        }
+
+        /* Blockquote — for small callouts (optional, but we use for "do NOT trust") */
+        blockquote {
+            border-left: 4px solid #7289DA;
+            padding-left: 1.2rem;
+            margin: 1.2rem 0;
+            color: #c0c3c9;
+            font-style: italic;
+        }
+
+        /* Responsive fine-tuning */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.5rem 1rem 0;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            h2 {
+                font-size: 1.45rem;
+            }
+            pre {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>GDLevel Discord Listener</h1>
+        <p>prints level data to a discord channel when it detects a GD level ID!</p>
+
+        <h3>"I dont understand coding shit so How do I just get this?"</h3>
+        <p><a href="https://discord.com/oauth2/authorize?client_id=1570809608191086622&permissions=68608&integration_type=0&scope=bot+applications.commands" target="_blank" rel="noopener noreferrer">Here. Invite this.</a>If it aint online. DM me on discord <code>MalikHw</code></p>
+        <p class="note">(THIS Bot availability from this link will depend on whether my phone is online or no. So the best is to self host)</p>
+        <h2>What it gets info about a level?</h2>
+        <ul>
+            <li>Name</li>
+            <li>Creator</li>
+            <li>Difficulty</li>
+            <li>Length</li>
+            <li>Downloads</li>
+            <li>Likes</li>
+            <li>Rate status</li>
+            <li>Description (if any)</li>
+        </ul>
+        
+<img src="image.png" alt="Screenshot">
+
+        <h3>How to self-host?</h3>
+        <ol>
+            <li><code>git clone https://github.com/MalikHw/GDlvl-discord-listening.git</code></li>
+            <li><a href="https://discord.com/developers/applications" target="_blank" rel="noopener noreferrer">https://discord.com/developers/applications</a> → New Application → Give it a name</li>
+            <li>Go to <strong>Bot</strong> tab. Turn on <strong>Message Content Intent</strong>. Copy Token. Make a new file named <code>.env</code> and paste <code>DISCORD_TOKEN=</code> and the copied token</li>
+            <li>Go back to the site. in Bot Permissions turn on “View Channels” “Send Messages” “View Message History”</li>
+            <li>Go to <strong>OAuth</strong> tab. Scroll down to URL Generator. Enable <code>bot</code> and <code>application.commands</code>. And under it Enable “View Channels” “Send Messages” “View Message History”(Again I know)</li>
+            <li>Copy generated URL. Open it to invite the bot to your server or send to a friend or whatever!</li>
+        </ol>
+
+        <h3>How to run!</h3>
+        <pre><code>pip install -r requirements.txt # tested against python 3.15.0
+python main.py</code></pre>
+        <p>And In the server do <code>/set_channel</code></p>
+    </div>
+    <div class="footer">
+        <a href="https://malikhw.me/donate" target="_blank" rel="noopener noreferrer">Donate</a> - By <a href="https://malikhw.me" target="_blank" rel="noopener noreferrer">MalikHw</a>
+    </div>
+</body>
+</html>

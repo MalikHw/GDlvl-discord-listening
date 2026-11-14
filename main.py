@@ -13,7 +13,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents) # Wont be used anyway
 tree = bot.tree
 
 FACE_DIFFICULTY_NAMES = {

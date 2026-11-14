@@ -2,7 +2,8 @@
 Prints level data to a discord channel when it detects a gd level ID!
 
 ### "I don't understand coding shit I just wanna get it!"
-[Here. Invite this. If the bot aint online DM me on discord "malikhw"](https://discord.com/oauth2/authorize?client_id=1570809608191086622&permissions=68608&integration_type=0&scope=bot+applications.commands)
+[Here. Invite this. If the bot ain't online DM me on discord "malikhw"](https://discord.com/oauth2/authorize?client_id=1570809608191086622&permissions=68608&integration_type=0&scope=bot+applications.commands)
+*(THIS Bot availability from this link will depend on whether my phone is online or no. so the best is to self host)*
 
 ## What it gets info about a level?
 - Name
@@ -13,6 +14,7 @@ Prints level data to a discord channel when it detects a gd level ID!
 - Length
 - Description
 - (Emojis soon)
+![image](image.png)
 
 ## How to self Host?
 1. Clone this repo locally
@@ -24,6 +26,7 @@ Prints level data to a discord channel when it detects a gd level ID!
 
 ### How to run!
 ```python
+pip install -r requirements.txt # tested against python 3.15.0
 python main.py
 ```
 And In the server do `/set_channel`
